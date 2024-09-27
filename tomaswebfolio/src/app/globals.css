@@ -10,7 +10,7 @@
   
     color-scheme: light dark;
     color: #ffffffde;
-    background-color: hwb(171 87% 11%);
+    background-color: hwb(250 15% 83%);
   
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -30,6 +30,7 @@
   body {
     margin: 0;
     place-items: center;
+    overflow: hidden;
   }
   
   
@@ -40,7 +41,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgb(41, 39, 39);
+    color: rgb(238, 231, 231);
   }
   
   .logo h1 {
@@ -53,14 +54,14 @@
   .contact {
     padding: 40px 20px;
     text-align: center;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #615e5e;
+    color: #e3e6eb;
   }
   
   .contact h2 {
     margin-bottom: 20px;
     font-size: 28px;
-    color: #282c34;
+    color: #e3e6eb;
   }
   
   .contact ul {
@@ -81,3 +82,8 @@
     text-decoration: underline;
   }
   
+/* Meteors */
+
+  .meteor-class {
+    z-index: -1; /* So meteors don't cover the content */
+  }
