@@ -52,10 +52,15 @@
   
   /* src/components/Contact.css */
   .contact {
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #615e5e;
-    color: #e3e6eb;
+    position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #615e5e;
+  color: #e3e6eb;
+    
   }
   
   .contact h2 {

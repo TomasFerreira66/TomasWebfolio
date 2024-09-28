@@ -1,5 +1,6 @@
 const Contact = () => {
     return (
+      <footer>
       <section className="contact">
         <h2>Contact me</h2>
         <ul>
@@ -14,6 +15,7 @@ const Contact = () => {
           </li>
         </ul>
       </section>
+      </footer>
     );
   };
   
