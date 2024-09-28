@@ -1,20 +1,64 @@
-import { FocusCards } from "@/components/ui/focus-cards";
+"use client";
+import React from "react";
+import { FloatingDock } from "@/components/ui/floating-dock";
+import {
+  IconBrandGithub,
+  IconBrandX,
+  IconExchange,
+  IconFileTextSpark,
+  IconHome,
+  IconNewSection,
+  IconTerminal2,
+  IconUserFilled,
+} from "@tabler/icons-react";
 
-export function FocusCardsDemo() {
-  const cards = [
+export function FloatingDockDemo() {
+  const links = [
+
+
     {
-      title: "Camping is for pros",
-      src: "https://cdn-icons-png.flaticon.com/512/3702/3702134.png",
+      title: "Projects",
+      icon: (
+        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
     },
     {
-      title: "The road not taken",
-      src: "https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "AboutMe",
+      icon: (
+        <IconUserFilled className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
     },
     {
-      title: "The First Rule",
-      src: "https://assets.aceternity.com/the-first-rule.png",
+      title: "CV",
+      icon: (
+        <IconFileTextSpark className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+
+    {
+      title: "Twitter",
+      icon: (
+        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "GitHub",
+      icon: (
+        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
     },
   ];
-
-  return <FocusCards cards={cards} />;
+  return (
+    (<div className="flex items-center justify-center h-[35rem] w-full">
+      <FloatingDock
+        // only for demo, remove for production
+        mobileClassName="translate-y-20"
+        items={links} />
+    </div>)
+  );
 }
