@@ -3,6 +3,8 @@ import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
+  IconBrandGmail,
+  IconBrandLinkedin,
   IconBrandX,
   IconExchange,
   IconFileTextSpark,
@@ -39,9 +41,9 @@ export function FloatingDockDemo() {
     },
 
     {
-      title: "Twitter",
+      title: "Email",
       icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandGmail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
@@ -49,6 +51,13 @@ export function FloatingDockDemo() {
       title: "GitHub",
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "Linkedin",
+      icon: (
+        <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },

@@ -50,45 +50,6 @@
   }
   
   
-  /* src/components/Contact.css */
-  .contact {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 20px;
-    text-align: center;
-    color: #ffffff; /* Darker color for contrast */
-  }
-  
-  .contact h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
-    color: #ffffff; /* Darker color to make it stand out */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Light shadow for a subtle pop */
-  }
-  
-  .contact ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .contact ul li {
-    margin: 10px 0;
-  }
-  
-  .contact ul li a {
-    color: #6ba9e2; /* Keep the link color bright */
-    text-decoration: none;
-    font-weight: bold; /* Makes it stand out more */
-  
-    padding: 5px; /* Adds space around links */
-  }
-  
-  .contact ul li a:hover {
-    text-decoration: underline;
-    color: #0056b3; /* Darken the hover color for emphasis */
-  }
   
   
 /* Meteors */

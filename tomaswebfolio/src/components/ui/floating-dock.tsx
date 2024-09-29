@@ -97,12 +97,13 @@ const FloatingDockDesktop = ({
   className?: string;
 }) => {
   let mouseX = useMotionValue(Infinity);
+
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-16 gap-4 items-end  rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
+        "mx-auto hidden md:flex h-20 gap-5 items-end rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3 pt-3", // Removed h-16 to allow dynamic height
         className
       )}
     >
@@ -112,6 +113,7 @@ const FloatingDockDesktop = ({
     </motion.div>
   );
 };
+
 
 function IconContainer({
   mouseX,
@@ -132,16 +134,16 @@ function IconContainer({
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  let heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  // Increase these ranges to make the items larger.
+  // Previously: [40, 80, 40] for width and height
+  let widthTransform = useTransform(distance, [-150, 0, 150], [60, 100, 60]); // Larger size range
+  let heightTransform = useTransform(distance, [-150, 0, 150], [60, 100, 60]);
 
-  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
-  let heightTransformIcon = useTransform(
-    distance,
-    [-150, 0, 150],
-    [20, 40, 20]
-  );
+  // Increase icon size as well.
+  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [30, 50, 30]); // Previously [20, 40, 20]
+  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [30, 50, 30]);
 
+  // Use spring animations to smoothly scale the larger sizes
   let width = useSpring(widthTransform, {
     mass: 0.1,
     stiffness: 150,
@@ -170,7 +172,7 @@ function IconContainer({
     <Link href={href}>
       <motion.div
         ref={ref}
-        style={{ width, height }}
+        style={{ width, height }} // These now use the larger values
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative"
@@ -188,7 +190,7 @@ function IconContainer({
           )}
         </AnimatePresence>
         <motion.div
-          style={{ width: widthIcon, height: heightIcon }}
+          style={{ width: widthIcon, height: heightIcon }} // Icon now uses the updated size
           className="flex items-center justify-center"
         >
           {icon}
