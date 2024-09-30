@@ -70,7 +70,7 @@ const FloatingDockMobile = ({
                 <Link
                   href={item.href}
                   key={item.title}
-                  className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center"
+                  className="h-10 w-10 rounded-full bg-black flex items-center justify-center" // Set to bright black
                 >
                   <div className="h-4 w-4">{item.icon}</div>
                 </Link>
@@ -81,9 +81,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-800 flex items-center justify-center"
+        className="h-10 w-10 rounded-full bg-black flex items-center justify-center" // Set to bright black
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-300" /> {/* Brighter icon color */}
       </button>
     </div>
   );
@@ -103,7 +103,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-20 gap-5 items-end rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3 pt-3", // Removed h-16 to allow dynamic height
+        "mx-auto hidden md:flex gap-5 items-end rounded-2xl bg-neutral-950 px-4 pb-3 pt-3", // Set to bright black
         className
       )}
     >
@@ -113,7 +113,6 @@ const FloatingDockDesktop = ({
     </motion.div>
   );
 };
-
 
 function IconContainer({
   mouseX,
@@ -136,12 +135,12 @@ function IconContainer({
 
   // Increase these ranges to make the items larger.
   // Previously: [40, 80, 40] for width and height
-  let widthTransform = useTransform(distance, [-150, 0, 150], [60, 100, 60]); // Larger size range
-  let heightTransform = useTransform(distance, [-150, 0, 150], [60, 100, 60]);
+  let widthTransform = useTransform(distance, [-150, 0, 150], [100, 140, 100]); // Larger size range
+  let heightTransform = useTransform(distance, [-150, 0, 150], [100, 140, 100]);
 
   // Increase icon size as well.
-  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [30, 50, 30]); // Previously [20, 40, 20]
-  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [30, 50, 30]);
+  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [50, 70, 50]); // Previously [20, 40, 20]
+  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [50, 70, 50]);
 
   // Use spring animations to smoothly scale the larger sizes
   let width = useSpring(widthTransform, {
@@ -169,33 +168,35 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href}>
-      <motion.div
-        ref={ref}
-        style={{ width, height }} // These now use the larger values
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative"
-      >
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              initial={{ opacity: 0, y: 10, x: "-50%" }}
-              animate={{ opacity: 1, y: 0, x: "-50%" }}
-              exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="px-2 py-0.5 whitespace-pre rounded-md bg-gray-100 border dark:bg-neutral-800 dark:border-neutral-900 dark:text-white border-gray-200 text-neutral-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xs"
-            >
-              {title}
-            </motion.div>
-          )}
-        </AnimatePresence>
+    <Link href={href} target="_blank" rel="noopener noreferrer">
+  <motion.div
+    ref={ref}
+    style={{ width, height }}
+    onMouseEnter={() => setHovered(true)}
+    onMouseLeave={() => setHovered(false)}
+    className="aspect-square rounded-full bg-neutral-900 flex items-center justify-center relative"
+  >
+    <AnimatePresence>
+      {hovered && (
         <motion.div
-          style={{ width: widthIcon, height: heightIcon }} // Icon now uses the updated size
-          className="flex items-center justify-center"
+          initial={{ opacity: 0, y: 10, x: "-50%" }}
+          animate={{ opacity: 1, y: 0, x: "-50%" }}
+          exit={{ opacity: 0, y: 2, x: "-50%" }}
+          className="px-2 py-0.5 whitespace-pre rounded-md bg-neutral-900 border border-neutral-700 text-white absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xl"
         >
-          {icon}
+          {title}
         </motion.div>
-      </motion.div>
-    </Link>
+      )}
+    </AnimatePresence>
+    <motion.div
+      style={{ width: widthIcon, height: heightIcon }}
+      className="flex items-center justify-center text-white"
+    >
+      {icon}
+    </motion.div>
+  </motion.div>
+</Link>
+
+
   );
 }
