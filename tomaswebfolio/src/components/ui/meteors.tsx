@@ -21,7 +21,7 @@ export const Meteors = ({
     }
   }, []);
 
-  const meteors = new Array(number || 10).fill(true);
+  const meteors = new Array(number || 3).fill(true);
 
   return (
     <>

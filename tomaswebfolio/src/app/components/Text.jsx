@@ -12,10 +12,7 @@ export function TypewriterEffectDemo() {
     {
       text: "welcome.",
     },
-  ];
-
-  const links = [
- {
+    {
   text: "Check",
  },
  {
@@ -44,14 +41,12 @@ export function TypewriterEffectDemo() {
 
 
   return (
-    <div>
-    <div className="flex flex-col items-center justify-center ">
+
+    <div className="flex flex-col items-center justify-center p-10 ">
       <TypewriterEffect words={hello} />    
     </div>
-    <div className="flex flex-col items-center justify-center ">
-      <TypewriterEffect words={links} />    
-    </div>
-  </div>
+    
+   
   
     
   );
