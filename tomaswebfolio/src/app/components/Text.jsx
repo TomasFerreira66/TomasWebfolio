@@ -36,6 +36,7 @@ export function TypewriterEffectDemo() {
  {
   text:"below.",
  },
+ 
 
   ]
 

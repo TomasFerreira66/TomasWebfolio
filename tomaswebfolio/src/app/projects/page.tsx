@@ -10,9 +10,7 @@ export default function Home() {
         <Header />
         <Meteors />
         <ShootingStars />
-        <StarsBackground />
-      
-       
+        <StarsBackground />       
       </div>
     );
   }
