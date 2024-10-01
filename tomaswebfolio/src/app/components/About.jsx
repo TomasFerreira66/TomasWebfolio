@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from 'next/link';
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
@@ -23,27 +24,19 @@ export function FloatingDockDemo() {
       icon: (
         <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/projects",
     },
     {
       title: "AboutMe",
       icon: (
         <IconUserFilled className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/aboutme",
     },
     {
       title: "CV",
       icon: (
         <IconFileTextSpark className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-
-    {
-      title: "Email",
-      icon: (
-        <IconBrandGmail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },
@@ -59,7 +52,7 @@ export function FloatingDockDemo() {
       icon: (
         <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://www.linkedin.com/in/tom%C3%A1s-ferreira-891405236/",
     },
   ];
   return (

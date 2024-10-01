@@ -21,7 +21,7 @@ export const Meteors = ({
     }
   }, []);
 
-  const meteors = new Array(number || 3).fill(true);
+  const meteors = new Array(number || 2).fill(true);
 
   return (
     <>
@@ -34,7 +34,6 @@ export const Meteors = ({
             className
           )}
           style={{
-            top: Math.floor(Math.random() * dimensions.height) + "px",
             left: Math.floor(Math.random() * dimensions.width) + "px",
             animationDelay: Math.random() * (0.8 - 0.2) + 0.2 + "s",
             animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + "s",
