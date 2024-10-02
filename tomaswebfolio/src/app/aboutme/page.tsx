@@ -11,31 +11,24 @@ import { useState } from 'react';
 
 export default function Home() {
 
-  const [displayText, setDisplayText] = useState("Hello, World!");
-  
-  // State to hold the value of the input textbox
-  const [inputText, setInputText] = useState("");
 
-  // Function to update the display text with the input text
-  const updateText = () => {
-    setDisplayText(inputText);
-    setInputText(""); // Clear the input field after updating
-  };
+  return (
+    <div>
+      <Header />
 
-
-    return (
-      <div>
-        <Header />
-
-        <div className="border-2 border-white p-4 rounded">
-        
+      <div className="flex justify-center items-center">
+        <div className="flex flex-col border-2 w-1/2 items-start border-white p-4 rounded text-2xl">
+          <p>Hello, my name is Tomás, I'm a Portuguese software engineer with a passion for web development.</p>
+          
+          <p>Web Tech: I work around JavaScript frameworks like React and Next.js. For design I specialize in Figma, Tailwind CSS and Framer Motion for some crispy clean websites.</p>
         </div>
-
-        <Meteors />
-        <ShootingStars />
-        <StarsBackground />           
       </div>
-      
-    );
-    
-  }
+
+      <Meteors />
+      <ShootingStars />
+      <StarsBackground />
+    </div>
+
+  );
+
+}
