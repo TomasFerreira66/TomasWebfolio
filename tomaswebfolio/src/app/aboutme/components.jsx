@@ -1,5 +1,5 @@
 // Componentsaboutme.jsx
-"use client";
+
 import {
     IconBrandFramerMotion,
     IconBrandGithub,
@@ -11,14 +11,14 @@ import {
     IconBrandReact,
     IconBrandTailwind,
   } from "@tabler/icons-react";
-  import AnimatedIcon from "./AnimatedIcon"; // Adjust the path as necessary
+  import AnimatedIcon from "./animatedIcon.jsx"; // Adjust the path as necessary
   
   const Componentsaboutme = () => {
     return (
       <div>
         <div className="flex space-y-4 p-4 items-center justify-center">
           <div className="flex flex-col space-y-4 items-center justify-center">
-            <div className="text-7xl">Tech Stack</div>
+            <div className="text-7xl">Web Stack</div>
             <div className="flex flex-row flex-wrap space-x-8">
               {[
                 { label: "HTML", icon: IconBrandHtml5, bgColor: "bg-orange-500" },

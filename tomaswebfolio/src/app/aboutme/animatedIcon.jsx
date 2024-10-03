@@ -1,6 +1,6 @@
-// AnimatedIcon.jsx
-"use client";
+
 import { motion } from "framer-motion";
+
 
 const dottedLineVariants = {
   hidden: { opacity: 0, scale: 0 },
@@ -11,16 +11,18 @@ const AnimatedIcon = ({ label, Icon, bgColor }) => {
   return (
     <div className="flex flex-col items-center text-2xl">
       <motion.div
-  initial="hidden"
-  animate="visible"
-  variants={dottedLineVariants}
-  className={`w-20 h-20 ${bgColor} text-white rounded-full flex items-center justify-center`} // Set both width and height to 24
->
-  <Icon className="w-16 h-16 text-white" /> {/* Adjust the icon size as needed */}
-</motion.div>
-      <div className="mt-5">{label}</div> {/* Optional margin-top for additional spacing */}
+        initial="hidden"
+        animate="visible"
+        variants={dottedLineVariants}
+        className={`w-24 h-24 rounded-full flex items-center justify-center ${bgColor} ${'text-white'}`}
+      >
+        <Icon className="w-16 h-16 text-white" />
+      </motion.div>
+      <span className="mt-2 w-24 text-center">{label}</span> {/* Set a fixed width and center the text */}
     </div>
   );
 };
 
+
 export default AnimatedIcon;
+
