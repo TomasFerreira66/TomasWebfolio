@@ -1,4 +1,4 @@
-// Componentsaboutme.jsx
+
 
 import {
     IconBrandFramerMotion,
@@ -11,9 +11,11 @@ import {
     IconBrandReact,
     IconBrandTailwind,
   } from "@tabler/icons-react";
+
+
   import AnimatedIcon from "./animatedIcon.jsx"; // Adjust the path as necessary
   
-  const Componentsaboutme = () => {
+  const Comp_webstack = () => {
     return (
       <div>
         <div className="flex space-y-4 p-4 items-center justify-center">
@@ -36,6 +38,10 @@ import {
       </div>
     );
   };
+
+
+  export default Comp_webstack;
+
   
-  export default Componentsaboutme;
+
   
