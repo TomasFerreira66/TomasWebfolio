@@ -6,12 +6,12 @@ const Comp_aboutme = () => {
   
   return (
     <div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center font-thin">
         <div className="flex flex-col justify-center items-center">
-          <div className="flex text-6xl">
+          <div className="flex text-6xl mb-3">
             ABOUTME
           </div>
-          <div className="flex flex-col text-2xl justify-center items-center">
+          <div className="flex flex-col text-2xl justify-center items-center font-thin">
             <span>
               <FlipWords words={words}/>my name is <span className='text-blue-300'>Tomás Ferreira</span>
             </span>

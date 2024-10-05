@@ -18,10 +18,10 @@ import {
   const Comp_webstack = () => {
     return (
       <div>
-        <div className="flex space-y-4 p-4 items-center justify-center">
+        <div className="flex space-y-4 p-4 items-center justify-center font-thin">
           <div className="flex flex-col space-y-4 items-center justify-center">
-            <div className="text-7xl">Web Stack</div>
-            <div className="flex flex-row flex-wrap space-x-8">
+            <div className="text-7xl mb-3">Web Stack</div>
+            <div className="flex flex-row flex-wrap space-x-8 ">
               {[
                 { label: "HTML", icon: IconBrandHtml5, bgColor: "bg-orange-500" },
                 { label: "Javascript", icon: IconBrandJavascript, bgColor: "bg-yellow-300" },
