@@ -2,7 +2,7 @@ import { Meteors } from '@/components/ui/meteors';
 
 const Header = () => {
   return (
-    <header className="header font-thin">
+    <header className="header">
       <div className="logo">
         <h1>Tomás Ferreira Webfolio</h1>
       </div>

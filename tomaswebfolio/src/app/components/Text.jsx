@@ -42,7 +42,7 @@ export function TypewriterEffectDemo() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center p-10 font-thin">
+    <div className="flex flex-col items-center justify-center p-10">
       <TypewriterEffect words={hello} />    
     </div>   
   );

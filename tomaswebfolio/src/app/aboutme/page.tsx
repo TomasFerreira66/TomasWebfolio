@@ -12,7 +12,7 @@ export default function Home() {
 
 
   return (
-    <div>
+    <div className='font-thin'>
       <Header />
       
       <div className='p-10 md:p-30 lg:p-20'>
