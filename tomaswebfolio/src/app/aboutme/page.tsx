@@ -1,6 +1,6 @@
 "use client"
 import Header from '../components/Header.jsx';
-import { Meteors } from '@/components/ui/meteors';
+
 import { ShootingStars } from '@/components/ui/shooting-stars';
 import { StarsBackground } from '@/components/ui/stars-background';
 import { useState } from 'react';
@@ -25,7 +25,7 @@ export default function Home() {
         <Comp_webstack />
       </div>
       
-      <Meteors />
+  
       <ShootingStars />
       <StarsBackground />
     </div>
