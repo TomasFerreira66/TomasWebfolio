@@ -11,7 +11,9 @@ export default function Home() {
       <Header />
       
       <TypewriterEffectDemo />
+    
       <FloatingDockDemo />
+
       <ShootingStars />
       <StarsBackground />
     

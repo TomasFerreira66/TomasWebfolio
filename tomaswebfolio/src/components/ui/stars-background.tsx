@@ -26,45 +26,49 @@ interface StarBackgroundProps {
 }
 
 export const StarsBackground: React.FC<StarBackgroundProps> = ({
-  starDensity = 0.00015,
+  starDensity = 0.00025,
   allStarsTwinkle = true,
-  twinkleProbability = 0.7,
+  twinkleProbability = 1,
   minTwinkleSpeed = 0.5,
-  maxTwinkleSpeed = 1,
+  maxTwinkleSpeed = 2,
   className,
 }) => {
   const [stars, setStars] = useState<StarProps[]>([]);
   const canvasRef: RefObject<HTMLCanvasElement> =
     useRef<HTMLCanvasElement>(null);
 
-  const generateStars = useCallback(
-    (width: number, height: number): StarProps[] => {
-      const area = width * height;
-      const numStars = Math.floor(area * starDensity);
-      return Array.from({ length: numStars }, () => {
-        const shouldTwinkle =
-          allStarsTwinkle || Math.random() < twinkleProbability;
-        return {
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 0.05 + 0.5,
-          opacity: Math.random() * 0.5 + 0.5,
-          twinkleSpeed: shouldTwinkle
-            ? minTwinkleSpeed +
-              Math.random() * (maxTwinkleSpeed - minTwinkleSpeed)
-            : null,
-        };
-      });
-    },
-    [
-      starDensity,
-      allStarsTwinkle,
-      twinkleProbability,
-      minTwinkleSpeed,
-      maxTwinkleSpeed,
-    ]
-  );
-
+    const generateStars = useCallback(
+      (width: number, height: number): StarProps[] => {
+        const area = width * height;
+        const numStars = Math.floor(area * starDensity);
+        return Array.from({ length: numStars }, () => {
+          const shouldTwinkle =
+            allStarsTwinkle || Math.random() < twinkleProbability;
+    
+          // Define a larger range for the star radius to create size variation
+          const radius = Math.random() < 0.5 ? Math.random() * 0.1 + 0.2 : Math.random() * 0.05 + 0.5;
+    
+          return {
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: radius,  // Use the newly calculated radius
+            opacity: Math.random() * 0.5 + 0.5,
+            twinkleSpeed: shouldTwinkle
+              ? minTwinkleSpeed +
+                Math.random() * (maxTwinkleSpeed - minTwinkleSpeed)
+              : null,
+          };
+        });
+      },
+      [
+        starDensity,
+        allStarsTwinkle,
+        twinkleProbability,
+        minTwinkleSpeed,
+        maxTwinkleSpeed,
+      ]
+    );
+    
   useEffect(() => {
     const updateStars = () => {
       if (canvasRef.current) {

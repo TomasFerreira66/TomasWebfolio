@@ -30,28 +30,5 @@
     place-items: center;
 
   }
-  
-  
-  
-  /* src/components/Header.css */
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: rgb(238, 231, 231);
-  }
-  
-  .logo h1 {
-    margin:10px;
-    font-size: 70px;
-  }
-  
-  
-  
-  
-/* Meteors */
 
-  .meteor-class {
-    z-index: -2; /* So meteors don't cover the content */
-  }
+  

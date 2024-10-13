@@ -4,7 +4,7 @@ import ProjectCard from "./projectCard.jsx";
 export default function Projects() {
   return (
     <div className="flex flex-col items-center justify-center sm:text-xl md:text-3xl lg:text-5xl font-thin p-8">
-      <div className="flex flex-col md:m-8 items-center sm:text-xl md:text-3xl lg:text-5xl pb-4">
+      <div className="`flex flex-col md:m-8 items-center text-3xl sm:text-2xl md:text-3xl lg:text-5xl pb-4`">
         Personal Projects
       </div>
 

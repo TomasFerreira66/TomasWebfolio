@@ -41,53 +41,46 @@ const FloatingDockMobile = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
-  const [open, setOpen] = useState(false);
   return (
     <div className={cn("relative block md:hidden", className)}>
       <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute bottom-full mb-2 inset-x-0 flex flex-col gap-2"
-          >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+        <motion.div
+          layoutId="nav"
+          className="flex bottom-full mb-2 inset-x-0 flex-row gap-2"
+        >
+          {items.map((item, idx) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: 10,
+                transition: {
+                  delay: idx * 0.05,
+                },
+              }}
+              transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+            >
+              <Link
+                href={item.href}
+                className="h-14 w-14 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded-full bg-black flex items-center justify-center" // Responsive sizes for small, medium, and large screens
               >
-                <Link
-                  href={item.href}
-                  key={item.title}
-                  className="h-10 w-10 rounded-full bg-black flex items-center justify-center" // Set to bright black
-                >
-                  <div className="h-4 w-4">{item.icon}</div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
+                <div className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-8 lg:w-8">{item.icon}</div> {/* Responsive icon sizes */}
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
       </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="h-10 w-10 rounded-full bg-black flex items-center justify-center" // Set to bright black
-      >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-300" /> {/* Brighter icon color */}
-      </button>
     </div>
   );
 };
+
+
+
 
 const FloatingDockDesktop = ({
   items,
