@@ -2,7 +2,7 @@ import { FlipWords } from '@/components/ui/flip-words';
 
 
 const Comp_aboutme = () => {
-  const words = ["Hi,", "Hello,", "Sup',", "Greetings,", "Howdy,", "Good day,", "Yo,", "Bonjour,", "Olá,", "Ahoy,"];
+  const words = ["Hi,", "Hello,", "Sup,", "Greetings,", "Howdy,", "Good day,", "Yo,", "Bonjour,", "Olá,", "Ahoy,"];
 
   return (
     <div>

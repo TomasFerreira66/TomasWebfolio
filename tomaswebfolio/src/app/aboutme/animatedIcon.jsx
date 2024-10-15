@@ -18,7 +18,7 @@ const AnimatedIcon = ({ label, Icon, bgColor }) => {
       >
         <Icon className="w-16 h-16 text-white" />
       </motion.div>
-      <span className="mt-2 w-24 text-center">{label}</span> {/* Set a fixed width and center the text */}
+      <span className="mt-2 w-24 text-center">{label}</span>
     </div>
   );
 };
