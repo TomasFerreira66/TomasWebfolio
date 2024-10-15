@@ -3,8 +3,6 @@ import { FlipWords } from '@/components/ui/flip-words';
 
 const Comp_aboutme = () => {
   const words = ["Hi,", "Hello,", "Sup',", "Greetings,", "Howdy,", "Good day,", "Yo,", "Bonjour,", "Olá,", "Ahoy,"];
-  
-  const sizes = "text-xl sm:text-lg md:text-2xl lg:text-3xl"
 
   return (
     <div>
@@ -13,7 +11,7 @@ const Comp_aboutme = () => {
           <div className="flex text-3xl mb-3">
             ABOUTME
           </div>
-          <div className={`flex flex-col justify-center items-center font-thin ${sizes}`}>
+          <div className={"flex flex-col justify-center items-center font-thin text-xl sm:text-lg md:text-2xl lg:text-3xl "}>
             <span>
               <FlipWords words={words}/>my name is <span className='text-blue-300'>Tomás Ferreira</span>
             </span>
