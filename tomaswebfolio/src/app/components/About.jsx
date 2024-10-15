@@ -1,16 +1,10 @@
 "use client";
 import React from "react";
-import Link from 'next/link';
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
-  IconBrandGmail,
   IconBrandLinkedin,
-  IconBrandX,
-  IconExchange,
   IconFileTextSpark,
-  IconHome,
-  IconNewSection,
   IconTerminal2,
   IconUserFilled,
 } from "@tabler/icons-react";

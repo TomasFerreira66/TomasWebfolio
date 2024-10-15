@@ -1,5 +1,4 @@
 import { FlipWords } from '@/components/ui/flip-words';
-import { span } from 'framer-motion/client';
 
 
 const Comp_aboutme = () => {

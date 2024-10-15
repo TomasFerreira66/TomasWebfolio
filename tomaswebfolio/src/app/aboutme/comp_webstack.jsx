@@ -1,10 +1,7 @@
 import {
   IconBrandFramerMotion,
-  IconBrandGithub,
-  IconBrandGmail,
   IconBrandHtml5,
   IconBrandJavascript,
-  IconBrandLinkedin,
   IconBrandNextjs,
   IconBrandReact,
   IconBrandTailwind,
