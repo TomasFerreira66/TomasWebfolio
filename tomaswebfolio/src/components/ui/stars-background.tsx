@@ -46,13 +46,13 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
             allStarsTwinkle || Math.random() < twinkleProbability;
     
           // Define a larger range for the star radius to create size variation
-          const radius = Math.random() < 0.5 ? Math.random() * 0.1 + 0.2 : Math.random() * 0.05 + 0.5;
+          const radius = Math.random() < 1 ? Math.random() * 0.3 + 0.5 : Math.random() * 0.4 + 3;
     
           return {
             x: Math.random() * width,
             y: Math.random() * height,
             radius: radius,  // Use the newly calculated radius
-            opacity: Math.random() * 0.5 + 0.5,
+            opacity: Math.random() * 1 + 0.1,
             twinkleSpeed: shouldTwinkle
               ? minTwinkleSpeed +
                 Math.random() * (maxTwinkleSpeed - minTwinkleSpeed)
