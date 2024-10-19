@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className='font-thin w-full'>
       <HomeButton />
-.
+
       <Personal_project />  
       <ShootingStars />
       <StarsBackground />
