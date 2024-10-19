@@ -1,5 +1,5 @@
 "use client"
-import Header from '../components/Header.jsx';
+import HomeButton from '../components/HomeButton.jsx';
 
 import { ShootingStars } from '@/components/ui/shooting-stars';
 import { StarsBackground } from '@/components/ui/stars-background';
@@ -11,10 +11,10 @@ export default function Home() {
 
 
   return (
-    <div className='font-thin'>
-      <Header />
+    <div className='font-thin w-full'>
+      <HomeButton />
       
-      <div className='p-10 md:p-30 lg:p-20'>
+      <div className='p-12'>
         <Comp_aboutme />
       </div>
      

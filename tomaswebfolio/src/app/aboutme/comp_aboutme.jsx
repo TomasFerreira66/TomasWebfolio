@@ -12,10 +12,10 @@ const Comp_aboutme = () => {
           </div>
           <div className={"flex flex-col justify-center items-center font-thin text-xl sm:text-lg md:text-2xl lg:text-3xl"}>
             <span>
-              <FlipWords words={words}/>my name is <span className="text-blue-300">Tomás Ferreira</span>
+              <FlipWords words={words}/>my name is <span className="text-blue-300">Tomás Ferreira</span>.
             </span>
             <span>
-              I&apos;m a senior full-stack web developer (in the making), but right now I&apos;m a student in my last year of university taking software engineer.
+              I&apos;m a senior full-stack web developer (in the making), but right now I&apos;m a student in my last year of university taking Software engineering.
             </span>
           </div>
         </div>

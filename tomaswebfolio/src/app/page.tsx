@@ -6,7 +6,8 @@ import { TypewriterEffectDemo } from './components/Text.jsx';
 
 export default function Home() {
   return (
-    <div className='font-thin'>
+    <div className='font-thin w-full'>
+      
       <Header />
       
       <TypewriterEffectDemo />
