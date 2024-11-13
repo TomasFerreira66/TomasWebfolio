@@ -14,9 +14,12 @@ const Comp_aboutme = () => {
             <span>
               <FlipWords words={words}/>my name is <span className="text-blue-300">Tomás Ferreira</span>.
             </span>
-            <span>
-              I&apos;m a senior full-stack web developer (in the making), but right now I&apos;m a student in my last year of university taking Software engineering.
+            <span className=''>
+              I&apos;m a junior (hopefully soon enough full-stack) web developer. 
             </span>
+            <span>
+            Right now I&apos;m a student in my last year of university taking Computer Systems Engineering.
+              </span>
           </div>
         </div>
       </div>
