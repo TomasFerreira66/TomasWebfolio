@@ -121,20 +121,15 @@ function IconContainer({
 
   const distance = useTransform(mouseX, (val) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-
     return val - bounds.x - bounds.width / 2;
   });
 
-  // Increase these ranges to make the items larger.
-  // Previously: [40, 80, 40] for width and height
-  const widthTransform = useTransform(distance, [-150, 0, 150], [100, 140, 100]); // Larger size range
+  const widthTransform = useTransform(distance, [-150, 0, 150], [100, 140, 100]);
   const heightTransform = useTransform(distance, [-150, 0, 150], [100, 140, 100]);
 
-  // Increase icon size as well.
-  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [50, 70, 50]); // Previously [20, 40, 20]
+  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [50, 70, 50]);
   const heightTransformIcon = useTransform(distance, [-150, 0, 150], [50, 70, 50]);
 
-  // Use spring animations to smoothly scale the larger sizes
   const width = useSpring(widthTransform, {
     mass: 0.1,
     stiffness: 150,
@@ -159,36 +154,41 @@ function IconContainer({
 
   const [hovered, setHovered] = useState(false);
 
+  const isCVButton = title === "CV"; // Adjust this condition as needed
+
   return (
-    <Link href={href}>
-  <motion.div
-    ref={ref}
-    style={{ width, height }}
-    onMouseEnter={() => setHovered(true)}
-    onMouseLeave={() => setHovered(false)}
-    className="aspect-square rounded-full bg-neutral-900 flex items-center justify-center relative"
-  >
-    <AnimatePresence>
-      {hovered && (
-        <motion.div
-          initial={{ opacity: 0, y: 10, x: "-50%" }}
-          animate={{ opacity: 1, y: 0, x: "-50%" }}
-          exit={{ opacity: 0, y: 2, x: "-50%" }}
-          className="px-2 py-0.5 whitespace-pre rounded-md bg-neutral-900 border border-neutral-700 text-white absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xl"
-        >
-          {title}
-        </motion.div>
-      )}
-    </AnimatePresence>
-    <motion.div
-      style={{ width: widthIcon, height: heightIcon }}
-      className="flex items-center justify-center text-white"
+    <Link
+      href={href}
+      target={isCVButton ? "_blank" : undefined}
+      rel={isCVButton ? "noopener noreferrer" : undefined}
+      className="flex items-center justify-center"
     >
-      {icon}
-    </motion.div>
-  </motion.div>
-</Link>
-
-
+      <motion.div
+        ref={ref}
+        style={{ width, height }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="aspect-square rounded-full bg-neutral-900 flex items-center justify-center relative"
+      >
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, x: "-50%" }}
+              animate={{ opacity: 1, y: 0, x: "-50%" }}
+              exit={{ opacity: 0, y: 2, x: "-50%" }}
+              className="px-2 py-0.5 whitespace-pre rounded-md bg-neutral-900 border border-neutral-700 text-white absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xl"
+            >
+              {title}
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <motion.div
+          style={{ width: widthIcon, height: heightIcon }}
+          className="flex items-center justify-center text-white"
+        >
+          {icon}
+        </motion.div>
+      </motion.div>
+    </Link>
   );
 }

@@ -32,7 +32,9 @@ export function FloatingDockDemo() {
       icon: (
         <IconFileTextSpark className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/cv.pdf", // Path to your file
+      target: "_blank", // Opens in a new tab
+      rel: "noopener noreferrer", // Security best practice
     },
     {
       title: "GitHub",
