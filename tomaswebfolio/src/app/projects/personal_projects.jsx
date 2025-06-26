@@ -12,18 +12,31 @@ export default function Projects() {
       <div className="flex flex-col w-full lg:w-1/2 mt-8 space-y-8">
         {/* Project 1 */}
         <div className="w-full">
-          <ProjectCard 
-            title="Portfolio" 
-            description="My first project done by myself... well, you're here after all. My portfolio! This portfolio was made using some beautiful components by Aceternity UI." 
-            
-            link="../#" 
+          <ProjectCard
+            title="Portfolio"
+            description="My first project done by myself... well, you're here after all. My portfolio! This portfolio was made using some beautiful components by Aceternity UI."
+
+            link="../#"
           />
 
-        
+
         </div>
 
+        {/* Project 2 */}
+        <div className="w-full">
+          <ProjectCard
+            title="Digital Product Passport"
+            description="Silsa's Digital Product Passport is a project I worked on during my internship at Silsa. It is a digital passport for products that allows users to track the lifecycle of a product, from production to disposal. The project was built using NextJS."
+
+            link="https://dpp.silsa.pt"
+          />
+
+
+        </div>
         
-       
+
+
+
 
         {/* Add more projects below */}
       </div>

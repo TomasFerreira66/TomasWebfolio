@@ -34,40 +34,52 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
   className,
 }) => {
   const [stars, setStars] = useState<StarProps[]>([]);
+  const [scrollY, setScrollY] = useState(0);
   const canvasRef: RefObject<HTMLCanvasElement> =
     useRef<HTMLCanvasElement>(null);
 
-    const generateStars = useCallback(
-      (width: number, height: number): StarProps[] => {
-        const area = width * height;
-        const numStars = Math.floor(area * starDensity);
-        return Array.from({ length: numStars }, () => {
-          const shouldTwinkle =
-            allStarsTwinkle || Math.random() < twinkleProbability;
-    
-          // Define a larger range for the star radius to create size variation
-          const radius = Math.random() < 1 ? Math.random() * 0.3 + 0.5 : Math.random() * 0.4 + 3;
-    
-          return {
-            x: Math.random() * width,
-            y: Math.random() * height,
-            radius: radius,  // Use the newly calculated radius
-            opacity: Math.random() * 1 + 0.1,
-            twinkleSpeed: shouldTwinkle
-              ? minTwinkleSpeed +
-                Math.random() * (maxTwinkleSpeed - minTwinkleSpeed)
-              : null,
-          };
-        });
-      },
-      [
-        starDensity,
-        allStarsTwinkle,
-        twinkleProbability,
-        minTwinkleSpeed,
-        maxTwinkleSpeed,
-      ]
-    );
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const generateStars = useCallback(
+    (width: number, height: number): StarProps[] => {
+      // Generate stars for a larger area to account for scrolling
+      const extendedHeight = height + window.innerHeight * 2; // Extra buffer
+      const area = width * extendedHeight;
+      const numStars = Math.floor(area * starDensity);
+      return Array.from({ length: numStars }, () => {
+        const shouldTwinkle =
+          allStarsTwinkle || Math.random() < twinkleProbability;
+
+        const radius = Math.random() < 1 ? Math.random() * 0.3 + 0.5 : Math.random() * 0.4 + 3;
+
+        return {
+          x: Math.random() * width,
+          y: Math.random() * extendedHeight - window.innerHeight, // Offset for buffer
+          radius: radius,
+          opacity: Math.random() * 1 + 0.1,
+          twinkleSpeed: shouldTwinkle
+            ? minTwinkleSpeed +
+              Math.random() * (maxTwinkleSpeed - minTwinkleSpeed)
+            : null,
+        };
+      });
+    },
+    [
+      starDensity,
+      allStarsTwinkle,
+      twinkleProbability,
+      minTwinkleSpeed,
+      maxTwinkleSpeed,
+    ]
+  );
     
   useEffect(() => {
     const updateStars = () => {
@@ -115,11 +127,31 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
 
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Calculate visible area based on scroll position
+      const viewportTop = scrollY;
+      const viewportBottom = scrollY + canvas.height;
+      
       stars.forEach((star) => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-        ctx.fill();
+        // Create infinite scroll effect by wrapping star positions
+        let starY = star.y;
+        const totalHeight = document.documentElement.scrollHeight || canvas.height * 3;
+        
+        // Wrap stars vertically for infinite effect
+        while (starY < viewportTop - 100) {
+          starY += totalHeight;
+        }
+        while (starY > viewportBottom + 100) {
+          starY -= totalHeight;
+        }
+        
+        // Only render stars that are potentially visible
+        if (starY >= viewportTop - 100 && starY <= viewportBottom + 100) {
+          ctx.beginPath();
+          ctx.arc(star.x, starY - scrollY, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+          ctx.fill();
+        }
 
         if (star.twinkleSpeed !== null) {
           star.opacity =
@@ -136,13 +168,13 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [stars]);
+  }, [stars, scrollY]);
 
   return (
     <canvas
       ref={canvasRef}
-      className={cn("h-full w-full absolute inset-0", className)}
-      style={{ pointerEvents: "none" }}
+      className={cn("h-full w-full fixed inset-0", className)}
+      style={{ pointerEvents: "none", zIndex: -1 }}
     />
   );
 };

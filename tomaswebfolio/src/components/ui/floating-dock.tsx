@@ -41,34 +41,42 @@ const FloatingDockMobile = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("relative block md:hidden", className)}>
+    <div className={cn("block md:hidden z-50", className)}>
       <AnimatePresence>
         <motion.div
           layoutId="nav"
-          className="flex bottom-full mb-2 inset-x-0 flex-row gap-2"
+          className="flex flex-col items-center gap-3 p-4 bg-black/80 backdrop-blur-sm rounded-2xl border border-neutral-700"
         >
           {items.map((item, idx) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{
                 opacity: 1,
-                y: 0,
+                x: 0,
               }}
               exit={{
                 opacity: 0,
-                y: 10,
+                x: -20,
                 transition: {
                   delay: idx * 0.05,
                 },
               }}
               transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+              className="flex items-center gap-3 w-full"
             >
               <Link
                 href={item.href}
-                className="h-14 w-14 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded-full bg-black flex items-center justify-center" // Responsive sizes for small, medium, and large screens
+                target={item.title === "CV" ? "_blank" : undefined}
+                rel={item.title === "CV" ? "noopener noreferrer" : undefined}
+                className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-neutral-800 transition-colors duration-200"
               >
-                <div className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-8 lg:w-8">{item.icon}</div> {/* Responsive icon sizes */}
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-neutral-900 flex items-center justify-center flex-shrink-0">
+                  <div className="h-5 w-5 sm:h-6 sm:w-6 text-white">{item.icon}</div>
+                </div>
+                <span className="text-white text-sm sm:text-base font-medium whitespace-nowrap">
+                  {item.title}
+                </span>
               </Link>
             </motion.div>
           ))}
@@ -77,9 +85,6 @@ const FloatingDockMobile = ({
     </div>
   );
 };
-
-
-
 
 const FloatingDockDesktop = ({
   items,
@@ -95,7 +100,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex gap-5 items-end", // Removed the container and padding
+        "mx-auto hidden md:flex gap-5 items-center z-50",
         className
       )}
     >
@@ -105,6 +110,7 @@ const FloatingDockDesktop = ({
     </motion.div>
   );
 };
+
 
 function IconContainer({
   mouseX,
@@ -154,7 +160,7 @@ function IconContainer({
 
   const [hovered, setHovered] = useState(false);
 
-  const isCVButton = title === "CV"; // Adjust this condition as needed
+  const isCVButton = title === "CV"; 
 
   return (
     <Link
