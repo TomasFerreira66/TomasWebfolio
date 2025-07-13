@@ -49,6 +49,9 @@ export default function Projects() {
   useEffect(() => {
     if (!sunRef.current) return;
 
+    // Store the current ref value to avoid stale closure issues
+    const currentSunRef = sunRef.current;
+
     // Scene setup for the sun
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
@@ -62,7 +65,7 @@ export default function Projects() {
     const sunSize = isMobile ? 150 : 200;
     renderer.setSize(sunSize, sunSize);
     renderer.setClearColor(0x000000, 0);
-    sunRef.current.appendChild(renderer.domElement);
+    currentSunRef.appendChild(renderer.domElement);
 
     // Create sun geometry
     const geometry = new THREE.SphereGeometry(1.5, 32, 32);
@@ -167,8 +170,8 @@ export default function Projects() {
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-      if (sunRef.current && renderer.domElement) {
-        sunRef.current.removeChild(renderer.domElement);
+      if (currentSunRef && renderer.domElement) {
+        currentSunRef.removeChild(renderer.domElement);
       }
       renderer.dispose();
       geometry.dispose();
@@ -241,7 +244,7 @@ export default function Projects() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-[600px] overflow-hidden">
 
           {/* Orbit Rings */}
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
               key={`orbit-${project.id}`}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-white/10 rounded-full pointer-events-none"

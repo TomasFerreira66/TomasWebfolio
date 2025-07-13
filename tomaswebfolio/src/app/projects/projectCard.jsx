@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 
-const ProjectCard = ({ title, description, link, planetType = 'blue', onPlanetClick, isSelected, isMobile = false }) => {
+const ProjectCard = ({ title, planetType = 'blue', onPlanetClick, isSelected, isMobile = false }) => {
   const planetRef = useRef();
-  const cardRef = useRef();
   const sceneRef = useRef();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -48,6 +47,9 @@ const ProjectCard = ({ title, description, link, planetType = 'blue', onPlanetCl
   useEffect(() => {
     if (!planetRef.current) return;
 
+    // Store the current ref value to avoid stale closure issues
+    const currentPlanetRef = planetRef.current;
+
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
@@ -61,7 +63,7 @@ const ProjectCard = ({ title, description, link, planetType = 'blue', onPlanetCl
     const planetSize = isMobile ? 80 : 100;
     renderer.setSize(planetSize, planetSize);
     renderer.setClearColor(0x000000, 0);
-    planetRef.current.appendChild(renderer.domElement);
+    currentPlanetRef.appendChild(renderer.domElement);
 
     // Create planet geometry - responsive size
     const sphereSize = isMobile ? 0.6 : 0.8;
@@ -190,8 +192,8 @@ const ProjectCard = ({ title, description, link, planetType = 'blue', onPlanetCl
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-      if (planetRef.current && renderer.domElement) {
-        planetRef.current.removeChild(renderer.domElement);
+      if (currentPlanetRef && renderer.domElement) {
+        currentPlanetRef.removeChild(renderer.domElement);
       }
       renderer.dispose();
       geometry.dispose();
@@ -199,7 +201,7 @@ const ProjectCard = ({ title, description, link, planetType = 'blue', onPlanetCl
       glowGeometry.dispose();
       glowMaterial.dispose();
     };
-  }, [isHovered, planetType, isSelected, isMobile]);
+  }, [isHovered, planetType, isSelected, isMobile, config.colors, config.glow, config.noise, config.speed.x, config.speed.y]);
 
   const handleClick = () => {
     if (onPlanetClick) {
@@ -207,21 +209,8 @@ const ProjectCard = ({ title, description, link, planetType = 'blue', onPlanetCl
     }
   };
 
-  // Ring colors based on planet type
-  const getRingColors = () => {
-    switch(planetType) {
-      case 'red': return ['border-red-400/20', 'border-orange-400/15'];
-      case 'green': return ['border-green-400/20', 'border-emerald-400/15'];
-      case 'purple': return ['border-purple-400/20', 'border-violet-400/15'];
-      case 'gold': return ['border-yellow-400/20', 'border-amber-400/15'];
-      default: return ['border-blue-400/20', 'border-purple-400/15'];
-    }
-  };
-
-  const ringColors = getRingColors();
-
   return (
-     <motion.div
+    <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
