@@ -5,7 +5,7 @@ import Personal_project from './personal_projects.jsx';
 
 export default function Home() {
   return (
-    <div className='font-thin w-full'>
+    <div className='font-thin w-full h-screen'>
       <HomeButton />
 
       <Personal_project />  
