@@ -237,10 +237,10 @@ const ProjectCard = ({ title, planetType = 'blue', onPlanetClick, isSelected, is
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{
-          rotate: 360,
+          rotate: -360,
         }}
         transition={{
-          duration: 20,
+          duration: 4,
           repeat: Infinity,
           ease: "linear",
         }}

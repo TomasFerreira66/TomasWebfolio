@@ -260,7 +260,7 @@ export default function Projects() {
             <div ref={sunRef} className="w-[150px] h-[150px] md:w-[200px] md:h-[200px]" />
           </div>
 
-          {/* Orbiting planets with animation */}
+        {/* Orbiting planets with animation */}
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -268,8 +268,11 @@ export default function Projects() {
               style={{
                 transformOrigin: "0 0",
               }}
+              initial={{
+                rotate: index * (360 / projects.length), // Start at different positions
+              }}
               animate={{
-                rotate: 360,
+                rotate: index * (360 / projects.length) + 360, // Complete one full rotation from initial position
               }}
               transition={{
                 duration: 20 + index * 5, // Different speeds for each planet
