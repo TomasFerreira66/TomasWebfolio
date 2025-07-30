@@ -15,7 +15,7 @@ const Comp_aboutme = () => {
               <FlipWords words={words}/>my name is <span className="text-blue-300">Tomás Ferreira</span>.
             </span>
             <span className="text-center">
-              I&apos;m a Portuguese junior developer with a Bachelor's in Computer Systems Engineering and a strong passion for web development. I enjoy creating clean, responsive, and purposeful digital experiences.
+              I&apos;m a Portuguese junior developer with a Bachelor&apos;s in Computer Systems Engineering and a strong passion for web development. I enjoy creating clean, responsive, and purposeful digital experiences.
             </span>
           </div>
         </div>

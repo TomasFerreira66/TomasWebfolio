@@ -14,38 +14,32 @@ const webStackData = [
   { 
     label: "HTML", 
     icon: IconBrandHtml5, 
-    bgColor: "bg-gradient-to-br from-orange-400 to-orange-600",
-    description: "Markup language for web structure"
+    bgColor: "bg-gradient-to-br from-orange-400 to-orange-600"
   },
   { 
     label: "JavaScript", 
     icon: IconBrandJavascript, 
-    bgColor: "bg-gradient-to-br from-yellow-300 to-yellow-500",
-    description: "Dynamic programming language"
+    bgColor: "bg-gradient-to-br from-yellow-300 to-yellow-500"
   },
   { 
     label: "React", 
     icon: IconBrandReact, 
-    bgColor: "bg-gradient-to-br from-blue-400 to-blue-600",
-    description: "Component-based UI library"
+    bgColor: "bg-gradient-to-br from-blue-400 to-blue-600"
   },
   { 
     label: "Next.js", 
     icon: IconBrandNextjs, 
-    bgColor: "bg-gradient-to-br from-gray-800 to-black",
-    description: "Full-stack React framework"
+    bgColor: "bg-gradient-to-br from-gray-800 to-black"
   },
   { 
     label: "Tailwind", 
     icon: IconBrandTailwind, 
-    bgColor: "bg-gradient-to-br from-teal-400 to-blue-500",
-    description: "Utility-first CSS framework"
+    bgColor: "bg-gradient-to-br from-teal-400 to-blue-500"
   },
   { 
     label: "Motion", 
     icon: IconBrandFramerMotion, 
-    bgColor: "bg-gradient-to-br from-pink-400 to-pink-600",
-    description: "Animation library for React"
+    bgColor: "bg-gradient-to-br from-pink-400 to-pink-600"
   },
 ];
 
@@ -91,7 +85,7 @@ const Comp_webstack = () => {
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12"
             variants={stack}
           >
-            {webStackData.map(({ label, icon, bgColor, description }, index) => (
+            {webStackData.map(({ label, icon, bgColor}, index) => (
               <AnimatedIcon 
                 key={label} 
                 label={label} 
